@@ -96,7 +96,6 @@ for (let i = 0; i < arr.length; i++) {
 console.log("4 rəqəminin indexləri: " + indexes);
 /////13
 let fiveIndex = [];
-
 for (let i = 0; i < arr.length; i++) {
   if (arr[i] === 5) {
     fiveIndex.push(i);
@@ -176,10 +175,19 @@ let arr2 = [
     key:13
   },
 ]
+////16
 let newArray2 = arr2.filter(obj => obj.name.startsWith('t'));
+/////17
 let result = arr2.filter(obj => obj.name.startsWith('t') && obj.name.endsWith('t'));
 console.log(`t hərifi ilə başlayıb t hərifi ilə bitən obyektlərin sayı  ${result.length}`)
+////18
 let sum2 = result.reduce((total, obj) => total + obj.key, 0);
+///// 19
+for (let i = 0; i < arr2.length; i++) {
+  if (arr2[i].name.endsWith('e')) {
+    arr2[i].name = 'SuperDev';
+  }
+}
 //////////20
 let res = arr2.reduce((acc, obj) => {
   if (obj.name.length > acc.name.length) {
@@ -217,7 +225,23 @@ arr2.forEach((obj, index) => {
   if (obj.name.split('').filter(x => x === 'L').length === 2) {
     arrL.push(index);
   }
+  //// 25
+  let keys = arr2.filter(obj => {
+    let count = 0;
+    for (let i = 0; i < obj.name.length; i++) {
+      if (obj.name[i] === 't') {
+        count++;
+      }
+    }
+    return count === 2;
+  }).map(obj => obj.key);
+  
+  console.log(keys);
+  ///// 26 
+  
 });
+let product = arr2.filter(obj => obj.name.length === 4).reduce((acc, obj) => acc * obj.key, 1);
+consol.log(`Arrydəki 4 hərifli obyektlərin keylərinin hasili ${product}`)
 console.log(arrL);
 console.log(`En böyük key-i olan obyektin adı ${longKey}`);
 console.log(`namenin uzunlugu 4 olan obyektler` ,newArr4)
